@@ -6,6 +6,10 @@
     </p>
   <% end %>
 
+  <% if @times_visited > 4%>
+    <small><%= "Visited index #{pluralize(@times_visited, 'time')}" %></small>
+  <% end %>
+
   <h1 class="font-bold text-xl mb-6 pb-2 border-b-2">
     Your Pragmatic Catalog
   </h1>
