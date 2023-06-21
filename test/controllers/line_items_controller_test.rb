@@ -26,6 +26,17 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'td', "Programming Ruby 1.9"
   end
 
+  test "Should create only two line items" do
+    [products(:ruby), products(:ruby), products(:one)].each do |product|
+      post line_items_url, params: { product_id: product.id }
+    end
+
+    follow_redirect!
+
+    assert_select 'h2', 'Your Cart'
+    assert_select 'table tr', count: 3
+  end
+
   test "should show line_item" do
     get line_item_url(@line_item)
     assert_response :success
