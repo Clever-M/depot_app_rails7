@@ -1,0 +1,8 @@
+
+<% if cart && !cart.line_items.empty? && cart.id.equal?(session[:cart_id]) %>
+  <div id="cart" class="bg-white rounded p-2">
+    <%= render cart %>
+  </div>
+<% else %>
+  <div id='cart'></div>
+<% end %>
